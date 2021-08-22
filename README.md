@@ -18,22 +18,53 @@ The following technologies are used:
 
 ## Usage
 
-To run the app in development run `npm run dev`. Use REST client to test it.  
+To run the app in development run `npm run dev`. Use REST client or `curl` to test it.  
 
 - To add a new food truck
   ```
-    POST Http://{baseurl}/food-truck
-    Body {locationId: '',Applicant: '',FacilityType: '', ...}
+    curl --header "Content-Type: application/json"  \
+         --request POST   --data '{"applicant":"binyam","facilityType":"truck"}' \ 
+           http://localhost:3000/food-truck
   ```
 
 - To retrieve a food truck based on `locationId` field
   ```
-    GET Http://{baseurl}/food-truck/:locationId
+    curl http://localhost:3000/food-truck/1514023
   ```
 
 - To get all food trucks around a block.
   By default, the api returns `10` trucks which can be changed by providing query
   params `limit` and `offset`.
   ```
-    GET Http://{baseurl}/food-truck?blockId={provide id}
+    curl http://localhost:3000/food-truck?block=3507
   ```
+
+## Test
+- To run a unit test do,
+```console
+  npm run test
+```
+- To run an integration test do
+```console
+  npm run integration_test
+```
+
+## Deployment
+
+As we mentioned above the app will be deployed in a micro-service environment, which mean we need an image to spin off
+containers. In the current effort we provided a dockerfile to create an image based on `node:alpine` base image. We also
+added `docker-compose` files to test the container in a local setting.
+
+The production deployment can be tested locally using `docker-compose` as follows.
+
+```console
+   docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d
+```
+
+## TODO
+- Add the additional verbs such as `PATCH`, and `DELETE`
+- Add a custom token to track api requests in log
+- Implement token based authorization, and authentication
+- Include appropriate API documentation using tools such as swagger
+- Use a database with appropriate optimization which handles millions of records. Nosql
+  databases such as mongodb can be a good candidate.
