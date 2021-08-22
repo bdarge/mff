@@ -13,6 +13,8 @@ The following technologies are used:
 - The api is implemented using [nodejs](https://nodejs.org/en/) with typescript, and [express](https://expressjs.com/).
   nodejs is one of the ideal choices to quickly set up an api for micro-service environment.
 - `node-cache` is used for in-memory database
+- For now only `applicant`, and `facilityType` are made required when inserting food truck.
+- logging is provided by `winston` along with `morgan` to log http logs.
 
 ## Usage
 

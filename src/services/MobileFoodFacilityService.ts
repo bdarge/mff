@@ -1,6 +1,7 @@
 import {Repository} from '../data/Repository'
+import {FoodTruck} from '../models/FoodTruck'
 
-export class FoodFacilityService {
+export class MobileFoodFacilityService {
     repository: Repository
 
     constructor(repository: Repository) {
@@ -13,5 +14,9 @@ export class FoodFacilityService {
 
     async getFoodTruckByLocationId(locationId: number) {
         return this.repository.getFoodTruck(locationId)
+    }
+
+    insertFoodTruck(foodTruck: FoodTruck) {
+        return this.repository.createFoodTruck(foodTruck)
     }
 }
