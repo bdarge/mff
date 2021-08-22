@@ -4,6 +4,8 @@
   "description": "An api to manage mobile food facility in a given city.",
   "main": "app.ts",
   "scripts": {
+    "start": "",
+    "dev": "nodemon src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "integration_test": "NODE_ENV=integration mocha -r ts-node/register 'src/tests/integration/**/*.ts'"
   },
