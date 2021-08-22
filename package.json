@@ -1,0 +1,22 @@
+{
+  "name": "mobile-food-facility",
+  "version": "1.0.0",
+  "description": "An api to manage mobile food facility in a given city.",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bdarge/mff.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Binyam Darge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdarge/mff/issues"
+  },
+  "homepage": "https://github.com/bdarge/mff#readme"
+}
