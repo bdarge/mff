@@ -13,14 +13,29 @@ export class InMemoryRepository implements Repository {
         this.cache = cache || new NodeCache()
     }
 
-    createFoodTruck(foodTruck: FoodTruck): Promise<number> {
-        return Promise.resolve(0);
+    /**
+     * inserts a new food truck
+     * @param foodTruck
+     */
+    async createFoodTruck(foodTruck: FoodTruck): Promise<number> {
+        let all = await this._getDatabase()
+        let sorted = all.sort((a, b) => a.locationId - b.locationId)
+        foodTruck.locationId = sorted[sorted.length - 1].locationId++
+        all.push(foodTruck)
+        // update cache
+        this._updateCache(all)
+        return Promise.resolve(foodTruck.locationId)
     }
 
-    getFoodTruck(locationId: number): Promise<FoodTruck | undefined> {
-        return Promise.resolve(undefined);
+    /**
+     * all a food truck based on locationId
+     * @param locationId
+     */
+    async getFoodTruck(locationId: number): Promise<FoodTruck | undefined> {
+        const all = await this._getDatabase()
+        return all.find((item: FoodTruck) => item.locationId === locationId)
     }
-
+    
     /**
      * get food trucks by block
      * @param block optional block identifier
@@ -59,5 +74,9 @@ export class InMemoryRepository implements Repository {
             this.cache.set(CACHE_KEY, data)
         }
         return data
+    }
+
+    private _updateCache(all: FoodTruck[]) {
+        this.cache.set(CACHE_KEY, all)
     }
 }
