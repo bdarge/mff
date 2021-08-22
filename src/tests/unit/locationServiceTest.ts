@@ -1,4 +1,4 @@
-import {LocationService} from '../../services/locationService'
+import {FoodFacilityService} from '../../services/FoodFacilityService'
 import {Repository} from '../../data/Repository'
 import {FoodTruckCollection} from '../../models/FoodTruckCollection'
 import assert from 'assert'
@@ -33,8 +33,8 @@ describe('service', function () {
     } as Repository
 
     it('should return paged data', async function () {
-        const locationService: LocationService = new LocationService(repo)
-        assert.deepEqual(await locationService.getFoodTrucks(),
+        const service: FoodFacilityService = new FoodFacilityService(repo)
+        assert.deepEqual(await service.getFoodTrucks(),
             {
                 metadata: {
                     resultset: {
@@ -47,7 +47,7 @@ describe('service', function () {
     })
 
     it('should return a food truck', async function () {
-        const locationService = new LocationService(repo)
-        assert.deepEqual(await locationService.getFoodTruckByLocationId(454675), data[1])
+        const service = new FoodFacilityService(repo)
+        assert.deepEqual(await service.getFoodTruckByLocationId(454675), data[1])
     })
 })

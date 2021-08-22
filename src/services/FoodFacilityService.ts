@@ -1,6 +1,6 @@
 import {Repository} from '../data/Repository'
 
-export class LocationService {
+export class FoodFacilityService {
     repository: Repository
 
     constructor(repository: Repository) {
