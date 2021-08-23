@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  food-truck:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:/home/node/app/nodemon.json
+      - ./Mobile_Food_Facility_Permit.csv:/home/node/app/Mobile_Food_Facility_Permit.csv
+    container_name: food-truck
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+    command: npm run dev
+
+
+
