@@ -62,9 +62,10 @@ The production deployment can be tested locally using `docker-compose` as follow
 ```
 
 ## TODO
-- Add the additional verbs such as `PATCH`, and `DELETE`
-- Add a custom token to track api requests in log
-- Implement token based authorization, and authentication
-- Include appropriate API documentation using tools such as swagger
+- Add the additional REST http verbs such as `PATCH`, and `DELETE`.
+- Add a custom token to track api requests in logs.
+- Implement token based authorization, and authentication.
+- Add more validation and test on post data.
+- Include appropriate API documentation using tools such as swagger.
 - Use a database with appropriate optimization which handles millions of records. Nosql
   databases such as mongodb can be a good candidate.
